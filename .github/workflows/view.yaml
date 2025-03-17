@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 2. 构建项目（根据你的项目调整）
+      # 2. 构建项
       - name: Install and Build
         run: |
           npm install

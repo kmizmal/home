@@ -5,29 +5,14 @@
     "link": "https://blog.zmal.top/"
   },
   {
-    "icon": "Cloud",
-    "name": "网盘",
-    "link": "https://pan.imsyy.top/"
-  },
-  {
-    "icon": "CompactDisc",
-    "name": "音乐",
-    "link": "https://music.imsyy.top/"
-  },
-  {
     "icon": "Compass",
     "name": "起始页",
     "link": "https://home.zmal.top/"
   },
   {
     "icon": "Book",
-    "name": "网址集",
+    "name": "友链",
     "link": "https://web.imsyy.top/"
-  },
-  {
-    "icon": "Fire",
-    "name": "今日热榜",
-    "link": "https://hot.imsyy.top/"
   },
   {
     "icon": "LaptopCode",
