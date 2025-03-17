@@ -19,6 +19,8 @@ jobs:
         run: |
           npm install
           npm run build
+        env:
+          VITE_WEATHER_KEY: ${{ secrets.VITE_WEATHER_KEY }}
 
       # 3. 一键部署到 gh-pages
       - name: Deploy to GitHub Pages
@@ -26,4 +28,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          keep_files: true                         # 是否保留 gh-pages 分支原有文件（false 表示覆盖）
+          keep_files: true
