@@ -27,4 +27,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}  # 无需额外配置，直接用默认 token
           publish_dir: ./dist                        # 你的构建产物目录
-          keep_files: false                         # 是否保留 gh-pages 分支原有文件（false 表示覆盖）
+          keep_files: true                         # 是否保留 gh-pages 分支原有文件（false 表示覆盖）
