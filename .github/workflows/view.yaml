@@ -1,0 +1,30 @@
+name: Build and Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - dev
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # 更推荐用 Ubuntu（更快且通用）
+
+    steps:
+      # 1. 检出代码
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. 构建项目（根据你的项目调整）
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+
+      # 3. 一键部署到 gh-pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # 无需额外配置，直接用默认 token
+          publish_dir: ./dist                        # 你的构建产物目录
+          keep_files: false                         # 是否保留 gh-pages 分支原有文件（false 表示覆盖）
