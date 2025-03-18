@@ -82,9 +82,9 @@ export default ({ mode }) =>
               type: "image/png",
             },
             {
-              src: "/images/icon/512.png",
+              src: "/images/icon/512.ico",
               sizes: "512x512",
-              type: "image/png",
+              type: "image/x-icon",
             },
           ],
         },

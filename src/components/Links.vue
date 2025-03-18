@@ -6,6 +6,10 @@
       </Icon>
       <span class="title">网站列表</span>
     </div>
+    <!-- 友链弹层 -->
+    <div v-if="showFriendCard" class="friend-card-container">
+      <FriendCard v-for="friend in friendLinks" :key="friend.link" :friend="friend" />
+    </div>
     <!-- 网站列表 -->
     <Swiper
       v-if="siteLinks[0]"
@@ -43,13 +47,17 @@
 <script setup>
 import { Icon } from "@vicons/utils";
 // 可前往 https://www.xicons.org 自行挑选并在此处引入
-import { Link, Blog, CompactDisc, Cloud, Compass, Book, Fire, LaptopCode } from "@vicons/fa"; // 注意使用正确的类别
+import { ref, computed, onMounted } from "vue";
+import { Link, Blog, CompactDisc, Cloud, Compass, Book, Fire, LaptopCode } from "@vicons/fa";
 import { mainStore } from "@/store";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination, Mousewheel } from "swiper/modules";
 import siteLinks from "@/assets/siteLinks.json";
+import friendLinks from "@/assets/friendLinks.json";
+import FriendCard from "@/components/FriendCard.vue"; // 导入 FriendCard 组件
 
 const store = mainStore();
+let showFriendCard = ref(false); // 控制友链卡片的显示状态
 
 // 计算网站链接
 const siteLinksList = computed(() => {
@@ -76,6 +84,8 @@ const siteIcon = {
 const jumpLink = (data) => {
   if (data.name === "音乐" && store.musicClick) {
     if (typeof $openList === "function") $openList();
+  } else if (data.name === "友链") {
+    showFriendCard.value = !showFriendCard.value; // **点击 "友链" 时切换 FriendCard 的显隐**
   } else {
     window.open(data.link, "_blank");
   }
@@ -177,6 +187,38 @@ onMounted(() => {
     @media (max-width: 720px) {
       height: 180px;
     }
+  }
+  .friend-card-container {
+    position: fixed;
+    z-index: 999;
+    left: 3%;
+    top: 20%;
+    width: 50%;
+    display: grid;
+    justify-items: center;
+    gap: 30px;
+    padding: 20px;
+    max-width: 1600px;
+    background-color: rgb(18 20 35 / 56%);
+    grid-template-columns: repeat(5, 1fr);
+
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+      margin: 0 auto;
+    }
+  }
+
+  .friend-card-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    filter: blur(10px);
+    z-index: -1;
+    margin: -20px;
   }
 }
 </style>
