@@ -70,14 +70,14 @@ const siteLinksList = computed(() => {
 });
 
 // 网站链接图标
-const siteIcon = {
-  Blog,
-  Cloud,
-  CompactDisc,
-  Compass,
+const siteIcon = { 
   Book,
-  Fire,
-  LaptopCode,
+  Blog,
+  Compass,
+  // Cloud,
+  // CompactDisc,
+  // Fire,
+  // LaptopCode,
 };
 
 // 链接跳转

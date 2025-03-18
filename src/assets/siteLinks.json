@@ -13,10 +13,6 @@
     "icon": "Compass",
     "name": "起始页",
     "link": "https://home.zmal.top/"
-  },
-  {
-    "icon": "LaptopCode",
-    "name": "站点监测",
-    "link": "https://status.imsyy.top/"
   }
+
 ]
