@@ -8,7 +8,11 @@ GitHub：https://github.com/imsyy/home
 @charset "utf-8";
 
 /*全局样式*/
-
+@font-face{
+  font-family: 'MAS';
+  font-style: normal;
+  src:url('/font/MAS.ttf') format('truetype');
+}
 html,
 body {
   width: 100%;
@@ -45,9 +49,9 @@ a:hover {
 
 // 字体文件
 @font-face {
-  font-family: "Pacifico-Regular";
+  font-family: "Pacifico-Regular-all";
   font-display: swap;
-  src: url("/font/Pacifico-Regular.ttf") format("truetype");
+  src: url("/font/Pacifico-Regular-all.ttf") format("truetype");
 }
 
 @font-face {

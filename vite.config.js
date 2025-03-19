@@ -92,8 +92,12 @@ export default ({ mode }) =>
       viteCompression(),
     ],
     server: {
-      port: "3000",
+      port: 3000, // 端口号应该是 number 类型，不是 string
       open: true,
+      host: true, // 允许外部访问
+      strictPort: true,
+      allowedHosts: [ "localhost","home.zmal.top","homedev.zmal.top"],
+      cors: true, // 允许跨域请求
     },
     resolve: {
       alias: [

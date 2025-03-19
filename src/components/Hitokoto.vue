@@ -21,7 +21,7 @@
     <Transition name="el-fade-in-linear" mode="out-in">
       <div :key="hitokotoData.text" class="content" @click="updateHitokoto">
         <span class="text">{{ hitokotoData.text }}</span>
-        <span class="from">-「&nbsp;{{ hitokotoData.from }}&nbsp;」</span>
+        <span class="from"><i>-「&nbsp;{{ hitokotoData.from }}&nbsp;」</i></span>
       </div>
     </Transition>
   </div>
@@ -109,6 +109,7 @@ onMounted(() => {
     flex-direction: column;
     justify-content: space-evenly;
     .text {
+      font-family: 'MAS';
       font-size: 1.1rem;
       word-break: break-all;
       text-overflow: ellipsis;
