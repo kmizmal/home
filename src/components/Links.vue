@@ -10,6 +10,8 @@
     <div v-if="showFriendCard" class="friend-card-container">
       <FriendCard v-for="friend in friendLinks" :key="friend.link" :friend="friend" />
     </div>
+    <div v-if="showStatus" class="friend-card-container iframe-container"><iframe src="https://asfag654-j.hf.space" frameborder="0"></iframe></div>
+    
     <!-- 网站列表 -->
     <Swiper
       v-if="siteLinks[0]"
@@ -58,6 +60,7 @@ import FriendCard from "@/components/FriendCard.vue"; // 导入 FriendCard 组�
 
 const store = mainStore();
 let showFriendCard = ref(false); // 控制友链卡片的显示状态
+let showStatus = ref(false);
 
 // 计算网站链接
 const siteLinksList = computed(() => {
@@ -70,14 +73,14 @@ const siteLinksList = computed(() => {
 });
 
 // 网站链接图标
-const siteIcon = { 
+const siteIcon = {
   Book,
   Blog,
   Compass,
   Cloud,
   // CompactDisc,
   // Fire,
-  // LaptopCode,
+  LaptopCode,
 };
 
 // 链接跳转
@@ -86,6 +89,8 @@ const jumpLink = (data) => {
     if (typeof $openList === "function") $openList();
   } else if (data.name === "友链") {
     showFriendCard.value = !showFriendCard.value; // **点击 "友链" 时切换 FriendCard 的显隐**
+  } else if (data.name === "Status") {
+    showStatus.value = !showStatus.value; // **点击 "友链" 时切换 FriendCard 的显隐**
   } else {
     window.open(data.link, "_blank");
   }
@@ -219,6 +224,24 @@ onMounted(() => {
     filter: blur(10px);
     z-index: -1;
     margin: -20px;
+  }
+  .iframe-container{
+    width: 430px;
+    height: 500px;
+    overflow: hidden;
+  }
+  iframe{
+    width:450px;
+    height:450px;
+    border: none;
+    position: relative;
+    right: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    &::-webkit-scrollbar{
+      display: none;
+    }
   }
 }
 </style>

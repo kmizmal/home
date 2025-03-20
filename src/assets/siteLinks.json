@@ -2,7 +2,7 @@
   {
     "icon": "Book",
     "name": "友链",
-    "link": "https://web.imsyy.top/"
+    "link": ""
   },
   {
     "icon": "Blog",
@@ -18,6 +18,11 @@
     "icon": "Cloud",
     "name": "短链生成",
     "link": "https://short.zmal.top/"
+  },
+  {
+    "icon":"LaptopCode",
+    "name":"Status",
+    "link":""
   }
 
 ]
