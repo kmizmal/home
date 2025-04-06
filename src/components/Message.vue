@@ -58,6 +58,7 @@ const descriptionText = reactive({
 
 // 切换右侧功能区
 const changeBox = () => {
+  // showFriendCard.value = false;
   if (store.getInnerWidth >= 721) {
     store.boxOpenState = !store.boxOpenState;
   } else {

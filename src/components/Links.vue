@@ -85,14 +85,37 @@ const siteIcon = {
 
 // 链接跳转
 const jumpLink = (data) => {
-  if (data.name === "音乐" && store.musicClick) {
-    if (typeof $openList === "function") $openList();
-  } else if (data.name === "友链") {
-    showFriendCard.value = !showFriendCard.value; // **点击 "友链" 时切换 FriendCard 的显隐**
-  } else if (data.name === "Status") {
-    showStatus.value = !showStatus.value; // **点击 "友链" 时切换 FriendCard 的显隐**
-  } else {
-    window.open(data.link, "_blank");
+  const panelConfig = {
+    '友链': showFriendCard,
+    'Status': showStatus
+  };
+
+  const exclusiveToggle = (currentPanel) => {
+    const isOpening = !panelConfig[currentPanel].value;
+    
+    // 强制状态重置
+    Object.entries(panelConfig).forEach(([name, ref]) => {
+      ref.value = name === currentPanel ? isOpening : false;
+    });
+
+    // 音乐特殊逻辑保持独立
+    if (currentPanel === "音乐" && isOpening) {
+      if (store.musicClick && typeof $openList === "function") $openList();
+    }
+  };
+
+  switch(data.name) {
+    case "音乐":
+    case "友链":
+    case "Status":
+      exclusiveToggle(data.name);
+      break;
+    
+    default:
+      // 强制关闭所有面板
+      Object.values(panelConfig).forEach(ref => ref.value = false);
+      data?.link && window.open(data.link, "_blank");
+      break;
   }
 };
 
@@ -195,6 +218,9 @@ onMounted(() => {
   }
   .friend-card-container {
     position: fixed;
+    transition: 
+      opacity 0.3s ease-in-out,
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 999;
     left: 3%;
     top: 20%;
