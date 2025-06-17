@@ -1,12 +1,17 @@
 <template>
-  <footer id="footer" :class="store.footerBlur ? 'blur' : null">
+  <footer
+    id="footer"
+    :class="store.footerBlur ? 'blur' : null"
+    :style="{ transform: isHovered ? 'translateY(0)' : 'translateY(2rem)' }"
+    @mouseenter="isHovered = true"
+    @mouseleave="isHovered = false"
+  >
     <Transition name="fade" mode="out-in">
       <div v-if="!store.playerState || !store.playerLrcShow" class="power">
         <span>
           <span :class="startYear < fullYear ? 'c-hidden' : 'hidden'">Copyright&nbsp;</span>
           &copy;
-          <span v-if="startYear < fullYear"
-            class="site-start">
+          <span v-if="startYear < fullYear" class="site-start">
             {{ startYear }}
             -
           </span>
@@ -45,6 +50,9 @@
 import { MusicOne } from "@icon-park/vue-next";
 import { mainStore } from "@/store";
 import config from "@/../package.json";
+import { ref } from "vue";
+
+const isHovered = ref(false);
 
 const store = mainStore();
 const fullYear = new Date().getFullYear();
@@ -52,8 +60,9 @@ const fullYear = new Date().getFullYear();
 // 加载配置数据
 // const siteStartDate = ref(import.meta.env.VITE_SITE_START);
 const startYear = ref(
-  import.meta.env.VITE_SITE_START?.length >= 4 ? 
-  import.meta.env.VITE_SITE_START.substring(0, 4) : null
+  import.meta.env.VITE_SITE_START?.length >= 4
+    ? import.meta.env.VITE_SITE_START.substring(0, 4)
+    : null,
 );
 const siteIcp = ref(import.meta.env.VITE_SITE_ICP);
 const siteAuthor = ref(import.meta.env.VITE_SITE_AUTHOR);
@@ -70,6 +79,7 @@ const siteUrl = computed(() => {
 
 <style lang="scss" scoped>
 #footer {
+  transition: all .3s;
   width: 100%;
   position: absolute;
   bottom: 0;

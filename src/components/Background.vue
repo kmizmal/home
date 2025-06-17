@@ -26,6 +26,7 @@
 <script setup>
 import { mainStore } from "@/store";
 import { Error } from "@icon-park/vue-next";
+import backgroundlinks from "@/assets/backgroundlinks.json";
 
 const store = mainStore();
 const bgUrl = ref(null);
@@ -43,6 +44,16 @@ const changeBg = (type) => {
     bgUrl.value = "https://api.vvhan.com/api/wallpaper/views";
   } else if (type == 3) {
     bgUrl.value = "https://api.vvhan.com/api/wallpaper/acg";
+  } else if (type == 4) {
+    // 从backgroundlinks.json中随机选择一张图片
+    if (backgroundlinks.length > 0) {
+      const randomIndex = Math.floor(Math.random() * backgroundlinks.length);
+      bgUrl.value = backgroundlinks[randomIndex].link;
+    } else {
+      // 如果json为空，回退到type 0
+      console.warn("backgroundlinks.json is empty, falling back to type 0");
+      changeBg(0);
+    }
   }
 };
 
@@ -130,7 +141,8 @@ onBeforeUnmount(() => {
     top: 0;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.5) 100%),
+    background-image:
+      radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.5) 100%),
       radial-gradient(rgba(0, 0, 0, 0) 33%, rgba(0, 0, 0, 0.3) 166%);
 
     transition: 1.5s;

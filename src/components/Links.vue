@@ -10,7 +10,6 @@
     <div v-if="showFriendCard" class="friend-card-container">
       <FriendCard v-for="friend in friendLinks" :key="friend.link" :friend="friend" />
     </div>
-    <div v-if="showStatus" class="friend-card-container iframe-container"><iframe src="https://asfag654-j.hf.space" frameborder="0"></iframe></div>
     
     <!-- 网站列表 -->
     <Swiper
@@ -50,7 +49,7 @@
 import { Icon } from "@vicons/utils";
 // 可前往 https://www.xicons.org 自行挑选并在此处引入
 import { ref, computed, onMounted } from "vue";
-import { Link, Blog, Compass, Book, CompactDisc, Cloud, Fire, LaptopCode } from "@vicons/fa";
+import { Link, Blog, Compass, Book, Cloud, LaptopCode } from "@vicons/fa";
 import { mainStore } from "@/store";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination, Mousewheel } from "swiper/modules";
@@ -60,7 +59,6 @@ import FriendCard from "@/components/FriendCard.vue"; // 导入 FriendCard 组�
 
 const store = mainStore();
 let showFriendCard = ref(false); // 控制友链卡片的显示状态
-let showStatus = ref(false);
 
 // 计算网站链接
 const siteLinksList = computed(() => {
@@ -87,7 +85,6 @@ const siteIcon = {
 const jumpLink = (data) => {
   const panelConfig = {
     '友链': showFriendCard,
-    'Status': showStatus
   };
 
   const exclusiveToggle = (currentPanel) => {
@@ -107,7 +104,6 @@ const jumpLink = (data) => {
   switch(data.name) {
     case "音乐":
     case "友链":
-    case "Status":
       exclusiveToggle(data.name);
       break;
     
