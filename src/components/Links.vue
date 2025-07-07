@@ -220,11 +220,12 @@ onMounted(() => {
     z-index: 999;
     left: 3%;
     top: 20%;
-    width: 50%;
+    width: 45%;
     display: grid;
     justify-items: center;
     gap: 30px;
-    padding: 20px;
+    // padding: 20px;
+    padding: 2rem;
     max-width: 1600px;
     background-color: rgb(18 20 35 / 56%);
     grid-template-columns: repeat(5, 1fr);

@@ -1,9 +1,21 @@
 [
     {
-      "avatar": "./friend/avatar_5.webp",
+      "avatar": "https://cdn.vinking.top/avatar.webp",
       "name": "Vinking",
       "description": "愿星光永远偏爱你的梦境",
       "link": "https://www.vinking.top/"
+    },
+    {
+      "avatar": "https://gin.zmal.top/images/avatar.png",
+      "name": "Gin",
+      "description": "Ciallo～(∠・ω< )⌒★",
+      "link": "https://gin.zmal.top/"
+    },
+    {
+      "avatar": "https://img.zmal.top/frined/57de5ad8ef1705f8fc15a83aa4de2706_720.4ub7p2t8cl.jpg",
+      "name": "给力小少年",
+      "description": "愿星光永远偏爱你的梦境",
+      "link": "https://glawa.zmal.top/"
     }
 
   ]
