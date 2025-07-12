@@ -2,9 +2,6 @@
   <footer
     id="footer"
     :class="store.footerBlur ? 'blur' : null"
-    :style="{ transform: isHovered ? 'translateY(0)' : 'translateY(2rem)' }"
-    @mouseenter="isHovered = true"
-    @mouseleave="isHovered = false"
   >
     <Transition name="fade" mode="out-in">
       <div v-if="!store.playerState || !store.playerLrcShow" class="power">
@@ -52,13 +49,11 @@ import { mainStore } from "@/store";
 import config from "@/../package.json";
 import { ref } from "vue";
 
-const isHovered = ref(false);
 
 const store = mainStore();
 const fullYear = new Date().getFullYear();
 
 // 加载配置数据
-// const siteStartDate = ref(import.meta.env.VITE_SITE_START);
 const startYear = ref(
   import.meta.env.VITE_SITE_START?.length >= 4
     ? import.meta.env.VITE_SITE_START.substring(0, 4)
@@ -80,10 +75,9 @@ const siteUrl = computed(() => {
 <style lang="scss" scoped>
 #footer {
   transition: all .3s;
+  will-change: transform;
   width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  position: fixed;
   height: 46px;
   line-height: 46px;
   text-align: center;

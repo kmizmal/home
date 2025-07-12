@@ -4,8 +4,6 @@
     <div class="info">
       <h3>{{ friend.name }}</h3>
       <p class="description">{{ friend.description }}</p>
-      <!-- <a v-if="friend.link" :href="friend.link" target="_blank" @click.stop>Visit</a>
-      <a v-else href="javascript:void(0);" style="color: gray; cursor: not-allowed"></a> -->
     </div>
   </div>
 </template>

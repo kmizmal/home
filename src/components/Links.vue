@@ -6,14 +6,11 @@
       </Icon>
       <span class="title">网站列表</span>
     </div>
-    <!-- 友链弹层 -->
-    <div v-if="showFriendCard" class="friend-card-container">
-      <FriendCard v-for="friend in friendLinks" :key="friend.link" :friend="friend" />
-    </div>
-    
+    <FriendSwiper  v-if="showFriendCard" @closefriend="showFriendCard=false"/>
+
     <!-- 网站列表 -->
     <Swiper
-      v-if="siteLinks[0]"
+      v-if="siteLinks[0]&&!showFriendCard"
       :modules="[Pagination, Mousewheel]"
       :slides-per-view="1"
       :space-between="40"
@@ -42,6 +39,12 @@
       </SwiperSlide>
       <div class="swiper-pagination" />
     </Swiper>
+
+        <!-- 友链弹层 -->
+        <!-- <div v-if="showFriendCard" class="friend-card-container">
+        <FriendCard v-for="friend in friendLinks" :key="friend.link" :friend="friend" />
+      </div> -->
+
   </div>
 </template>
 
@@ -54,8 +57,8 @@ import { mainStore } from "@/store";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination, Mousewheel } from "swiper/modules";
 import siteLinks from "@/assets/siteLinks.json";
-import friendLinks from "@/assets/friendLinks.json";
-import FriendCard from "@/components/FriendCard.vue"; // 导入 FriendCard 组件
+// import friendLinks from "@/assets/friendLinks.json";
+// import FriendCard from "@/components/FriendCard.vue"; // 导入 FriendCard 组件
 
 const store = mainStore();
 let showFriendCard = ref(false); // 控制友链卡片的显示状态
@@ -84,12 +87,12 @@ const siteIcon = {
 // 链接跳转
 const jumpLink = (data) => {
   const panelConfig = {
-    '友链': showFriendCard,
+    友链: showFriendCard,
   };
 
   const exclusiveToggle = (currentPanel) => {
     const isOpening = !panelConfig[currentPanel].value;
-    
+
     // 强制状态重置
     Object.entries(panelConfig).forEach(([name, ref]) => {
       ref.value = name === currentPanel ? isOpening : false;
@@ -101,15 +104,15 @@ const jumpLink = (data) => {
     }
   };
 
-  switch(data.name) {
+  switch (data.name) {
     case "音乐":
     case "友链":
       exclusiveToggle(data.name);
       break;
-    
+
     default:
       // 强制关闭所有面板
-      Object.values(panelConfig).forEach(ref => ref.value = false);
+      Object.values(panelConfig).forEach((ref) => (ref.value = false));
       data?.link && window.open(data.link, "_blank");
       break;
   }
@@ -214,7 +217,7 @@ onMounted(() => {
   }
   .friend-card-container {
     position: fixed;
-    transition: 
+    transition:
       opacity 0.3s ease-in-out,
       transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 999;
@@ -248,21 +251,21 @@ onMounted(() => {
     z-index: -1;
     margin: -20px;
   }
-  .iframe-container{
+  .iframe-container {
     width: 430px;
     height: 500px;
     overflow: hidden;
   }
-  iframe{
-    width:450px;
-    height:450px;
+  iframe {
+    width: 450px;
+    height: 450px;
     border: none;
     position: relative;
     right: 20px;
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    &::-webkit-scrollbar{
+    &::-webkit-scrollbar {
       display: none;
     }
   }
