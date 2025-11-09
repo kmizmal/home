@@ -29,6 +29,7 @@
       <Transition name="fade" mode="out-in">
         <Footer class="f-ter" v-show="!store.backgroundShow && !store.setOpenState" />
       </Transition>
+      <SakanaWidget v-show="!store.backgroundShow" />
     </main>
   </Transition>
 </template>
@@ -43,6 +44,7 @@ import MainLeft from "@/views/Main/Left.vue";
 import MainRight from "@/views/Main/Right.vue";
 import Background from "@/components/Background.vue";
 import Footer from "@/components/Footer.vue";
+import SakanaWidget from "@/components/SakanaWidget.vue";
 import Box from "@/views/Box/index.vue";
 import MoreSet from "@/views/MoreSet/index.vue";
 import cursorInit from "@/utils/cursor.js";
@@ -133,6 +135,7 @@ onBeforeUnmount(() => {
   left: 0;
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
   transform: scale(1.2);
   transition: transform 0.3s;
   animation: fade-blur-main-in 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
@@ -236,15 +239,9 @@ onBeforeUnmount(() => {
     }
   }
   @media (max-width: 390px) {
-    overflow-x: auto;
+    overflow-x: hidden;
     .container {
-      width: 391px;
-    }
-    .menu {
-      left: 167.5px; // 391px * 0.5 - 28px
-    }
-    .f-ter {
-      width: 391px;
+      width: 100%;
     }
     @media (min-height: 721px) {
       overflow-y: hidden;

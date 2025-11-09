@@ -23,14 +23,14 @@
     </SwiperSlide>
   </Swiper>
   <div class="swiper-pagination"></div>
-  <button @click="emit('closefriend')">关闭</button>
+  <button @click="emit('closefriend')">返回</button>
 </template>
 
 <script setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination, Mousewheel } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
+// import "swiper/css";
+// import "swiper/css/pagination";
 
 // 假设链接数据结构如下
 import friends from "@/assets/friendLinks.json";
@@ -50,7 +50,7 @@ const emit = defineEmits(["closefriend"]);
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding-bottom: 40px;
+  padding-bottom: 1.5rem;
 
   .swiper-slide {
     width: 100%;
@@ -126,7 +126,6 @@ const emit = defineEmits(["closefriend"]);
       align-items: center;
       justify-content: center;
       :deep(.swiper-pagination-bullet) {
-        background-color: #fff;
         width: 20px;
         height: 4px;
         margin: 0 4px;
@@ -140,6 +139,47 @@ const emit = defineEmits(["closefriend"]);
           opacity: 1;
         }
       }
+    }
+  }
+}
+button {
+  display: block;
+  margin: 0 auto 0 auto;
+  padding: 8px 24px;
+  background: linear-gradient(45deg, #786094 0%, #b0d8e5 100%);
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 4px 10px rgba(120, 96, 148, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #5a4a70 0%, #8dc5d9 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 6px 15px rgba(120, 96, 148, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+
+    &::before {
+      opacity: 1;
     }
   }
 }

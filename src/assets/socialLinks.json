@@ -21,12 +21,18 @@
     "name": "Email",
     "icon": "/images/icon/email.png",
     "tip": "来封 Email ~",
-    "url": "mailto:admin@zmal.top"
+    "url": "mailto:zmal@zmal.top"
   },
   {
     "name": "Telegram",
     "icon": "/images/icon/telegram.png",
     "tip": "你懂的 ~",
     "url": "https://t.me/kmizmal_bot"
+  },
+  {
+    "name": "Discord",
+    "icon": "/images/icon/discord.png",
+    "tip": "你懂的 ~",
+    "url": "https://discord.gg/CqMPyMWWbg"
   }
 ]
