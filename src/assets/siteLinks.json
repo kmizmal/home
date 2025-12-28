@@ -15,14 +15,23 @@
     "link": "https://home.zmal.top/"
   },
   {
-    "icon": "Cloud",
-    "name": "短链生成",
-    "link": "https://short.zmal.top/"
+    "icon": "ClipboardList",
+    "name": "ASF",
+    "link": "https://la2.zmal.top:6542/bots"
   },
   {
-    "icon":"LaptopCode",
-    "name":"Status",
-    "link":"https://sleepy.zmal.top"
+    "icon": "Cubes",
+    "name": "AdguardHome",
+    "link": "https://s.zmal.top/ESyMak"
+  },
+  {
+    "icon": "AddressCardRegular",
+    "name": "Vaultwarden",
+    "link": "https://vaultwarden.zmal.top/"
+  },
+  {
+    "icon": "Cloud",
+    "name": "短链生成",
+    "link": "https://s.zmal.top/"
   }
-
 ]

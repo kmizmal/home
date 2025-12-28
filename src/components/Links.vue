@@ -6,11 +6,11 @@
       </Icon>
       <span class="title">网站列表</span>
     </div>
-    <FriendSwiper  v-if="showFriendCard" @closefriend="showFriendCard=false"/>
+    <FriendSwiper v-if="showFriendCard" @closefriend="showFriendCard = false" />
 
     <!-- 网站列表 -->
     <Swiper
-      v-if="siteLinks[0]&&!showFriendCard"
+      v-if="siteLinks[0] && !showFriendCard"
       :modules="[Pagination, Mousewheel]"
       :slides-per-view="1"
       :space-between="40"
@@ -39,12 +39,6 @@
       </SwiperSlide>
       <div class="swiper-pagination" />
     </Swiper>
-
-        <!-- 友链弹层 -->
-        <!-- <div v-if="showFriendCard" class="friend-card-container">
-        <FriendCard v-for="friend in friendLinks" :key="friend.link" :friend="friend" />
-      </div> -->
-
   </div>
 </template>
 
@@ -52,13 +46,11 @@
 import { Icon } from "@vicons/utils";
 // 可前往 https://www.xicons.org 自行挑选并在此处引入
 import { ref, computed, onMounted } from "vue";
-import { Link, Blog, Compass, Book, Cloud, LaptopCode } from "@vicons/fa";
+import { Link, Blog, Compass, Book, Cloud, LaptopCode, ClipboardList, Cubes,AddressCardRegular } from "@vicons/fa";
 import { mainStore } from "@/store";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination, Mousewheel } from "swiper/modules";
 import siteLinks from "@/assets/siteLinks.json";
-// import friendLinks from "@/assets/friendLinks.json";
-// import FriendCard from "@/components/FriendCard.vue"; // 导入 FriendCard 组件
 
 const store = mainStore();
 let showFriendCard = ref(false); // 控制友链卡片的显示状态
@@ -79,9 +71,10 @@ const siteIcon = {
   Blog,
   Compass,
   Cloud,
-  // CompactDisc,
-  // Fire,
+  ClipboardList,
+  Cubes,
   LaptopCode,
+  AddressCardRegular
 };
 
 // 链接跳转
@@ -118,9 +111,9 @@ const jumpLink = (data) => {
   }
 };
 
-onMounted(() => {
-  console.log(siteLinks);
-});
+// onMounted(() => {
+//   console.log(siteLinks);
+// });
 </script>
 
 <style lang="scss" scoped>
